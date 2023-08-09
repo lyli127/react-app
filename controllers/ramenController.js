@@ -147,3 +147,10 @@ const deleteRamenReview = (request, response) => {
   });
 };
 
+export default {
+  createRamenReview,
+  getAllRamenReviews,
+  getRamenReviewById,
+  updateRamenReview,
+  deleteRamenReview,
+};
