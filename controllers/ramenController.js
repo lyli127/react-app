@@ -73,3 +73,15 @@ const getAllRamenReviews = (request, response) => {
   );
 };
 
+//Read ramen review by id
+const getRamenReviewById = (request, response) => {
+  const id = parseInt(request.params.id);
+
+  pool.query("SELECT * FROM ramen WHERE id = $1", [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
