@@ -135,3 +135,15 @@ const updateRamenReview = (request, response) => {
   );
 };
 
+//Delete ramen review
+const deleteRamenReview = (request, response) => {
+  const id = parseInt(request.params.id);
+
+  pool.query("DELETE FROM ramen WHERE id = $1", [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).send(`Ramen review deleted with ID: ${id}`);
+  });
+};
+
