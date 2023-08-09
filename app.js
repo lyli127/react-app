@@ -5,3 +5,6 @@ import RamenReview from "./controllers/ramenController.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+//middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
