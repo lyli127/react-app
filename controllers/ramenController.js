@@ -59,3 +59,17 @@ const createRamenReview = (request, response) => {
   );
 };
 
+//Read all ramen review
+const getAllRamenReviews = (request, response) => {
+  pool.query(
+    "SELECT * FROM ramen WHERE user_id= $1 ORDER BY id DESC",
+    [id],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
