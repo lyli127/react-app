@@ -31,3 +31,14 @@ app.get("/users/:id", User.getUserById);
 app.post("/users", User.createUser);
 app.put("/users/:id", User.updateUser);
 app.delete("/users/:id", User.deleteUser);
+
+//RAMEN
+app.get("/ramen/:id", RamenReview.getRamenReviewById);
+app.get("/ramen", RamenReview.getAllRamenReviews);
+app.post("/ramen", RamenReview.createRamenReview);
+app.put("/ramen/:id", RamenReview.updateRamenReview);
+app.delete("/ramen/:id", RamenReview.deleteRamenReview);
+
+//RAMEN
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
