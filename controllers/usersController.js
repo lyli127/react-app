@@ -77,3 +77,4 @@ const deleteUser = (request, response) => {
   });
 };
 
+export default { createUser, getUserById, updateUser, deleteUser };
