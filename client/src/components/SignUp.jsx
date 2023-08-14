@@ -1,11 +1,17 @@
+//React
+import { React, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+//Bootstrap
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+//My Components
 import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
+import { AccountContext } from "./AccountContext";
 
 function SignUp() {
   return (
