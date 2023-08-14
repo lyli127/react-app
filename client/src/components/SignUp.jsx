@@ -33,7 +33,7 @@ function SignUp() {
             label="Name"
             className="mb-3"
           >
-            <Form.Control type="name" placeholder="Your Name" />
+            <Form.Control type="name" placeholder="Your Name" required />
           </FloatingLabel>
         </Col>
       </Form.Group>
@@ -50,7 +50,11 @@ function SignUp() {
               label="Email address"
               className="mb-3"
             >
-              <Form.Control type="email" placeholder="name@example.com" />
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                required
+              />
             </FloatingLabel>
           </Col>
         </Form.Group>
@@ -62,7 +66,7 @@ function SignUp() {
         >
           <Col xs={6}>
             <FloatingLabel controlId="floatingPassword" label="Password">
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" placeholder="Password" required />
               <Form.Text id="passwordHelpBlock" muted>
                 Your password must be 8-20 characters long, contain letters and
                 numbers, and must not contain spaces, special characters, or
