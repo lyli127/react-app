@@ -21,6 +21,7 @@ const pool = new PG.Pool({
 // Create new user
 const createUser = (request, response) => {
   const { name, email, password } = request.body;
+  console.log("request.body", request.body);
   // source: https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/ - salting and hashing at the same time
   bcrypt.hash(password, 10, (err, hash) => {
     if (err) {
@@ -33,7 +34,8 @@ const createUser = (request, response) => {
         if (error) {
           throw error;
         }
-        response.status(201).send(`User added with ID: ${results.rows[0].id}`);
+        // response.status(201).json(`User added with ID: ${results.rows[0].id}`);
+        response.status(201).json({ status: "", loggedIn: true });
       }
     );
   });
@@ -41,6 +43,7 @@ const createUser = (request, response) => {
 
 //Get user by id
 const getUserById = (request, response) => {
+  console.log("request.params", request.params);
   const id = parseInt(request.params.id);
 
   pool.query("SELECT * FROM users WHERE id = $1", [id], (error, results) => {
