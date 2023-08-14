@@ -1,0 +1,33 @@
+/* 
+font-family: 'Noto Serif', serif;
+font-family: 'Noto Serif JP', serif;
+font-family: 'Vina Sans', cursive; */
+
+body {
+  background-color: #3a3a3a;
+}
+
+h1 {
+  font-family: "Vina Sans", cursive;
+  color: #e9d148;
+  font-size: 2.5rem;
+}
+h1.title {
+  font-family: "Noto Serif JP", serif;
+  color: #e06255;
+}
+
+h2,
+h3,
+h4,
+p {
+  font-family: "Noto Serif", serif;
+  color: #dfdfdf;
+}
+a {
+  color: #e06255;
+  text-decoration: none !important;
+}
+a:hover {
+  color: #e9d148;
+}
