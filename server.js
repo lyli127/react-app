@@ -21,3 +21,17 @@ app.post("/api/users", User.createUser);
 app.put("/api/users/:id", User.updateUser);
 // DELETE
 app.delete("/api/users/:id", User.deleteUser);
+
+//RAMEN REVIEW
+// GET
+app.get("/api/review/:id", RamenReview.getRamenReviewById);
+app.get("/api/review/:user_id/all", RamenReview.getAllRamenReviewsByUser);
+app.get("/api/review/:restaurant_name", RamenReview.getRamenReviewByRestaurant);
+// POST
+app.post("/api/review", RamenReview.createRamenReview);
+// PUT
+app.put("/api/review/:id", RamenReview.updateRamenReview);
+// DELETE
+app.delete("/api/review/:id", RamenReview.deleteRamenReview);
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
