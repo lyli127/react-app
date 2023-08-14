@@ -90,8 +90,24 @@ const getRamenReviewById = (request, response) => {
     if (error) {
       throw error;
     }
-    response.status(200).json(results.rows);
+    // console.log(results.rows[0]);
   });
+};
+
+//Read ramen review by restaurant id/name
+const getRamenReviewByRestaurant = (request, response) => {
+  const restaurantName = request.params.restaurant_name;
+  pool.query(
+    "SELECT * FROM ramen WHERE restaurant_name = $1",
+    [restaurantName],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows[0]);
+      // console.log(results.rows[0]);
+    }
+  );
 };
 
 //Update ramen review
