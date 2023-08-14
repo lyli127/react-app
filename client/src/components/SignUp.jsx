@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Alert from "react-bootstrap/Alert";
 //My Components
 import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
@@ -15,6 +16,8 @@ import { AccountContext } from "./AccountContext";
 
 function SignUp() {
   const { setUser } = useContext(AccountContext);
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
   const [fields, setFields] = useState({
     name: "",
@@ -32,7 +35,7 @@ function SignUp() {
   function handleSubmit(event) {
     event.preventDefault();
     // console.log(fields);
-    fetch("/api/users", {
+    fetch("http://localhost:3000/api/users", {
       method: "POST",
       body: JSON.stringify(fields),
       headers: {
@@ -41,21 +44,28 @@ function SignUp() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (!data) {
-          return console.log(
-            "No data returned from server. See SignUp.jsx, line 45"
-          );
+        // if (!data) {
+        //   return console.log(
+        //     "No data returned from server. See SignUp.jsx, line 45"
+        //   );
+        // }
+
+        setUser({ loggedIn: data.loggedIn });
+
+        if (data.status) {
+          setError(data.status);
+        } else if (data.loggedIn) {
+          navigate("/my-reviews");
         }
-        setUser(...data);
         navigate("/find-ramen");
-      })
-      .catch((error) => {
-        console.log(error);
-        if (response.status >= 400 && response.status < 600) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
       });
+    // .catch((error) => {
+    //   console.log(error);
+    //   if (response.status >= 400 && response.status < 600) {
+    //     throw new Error("Bad response from server");
+    //   }
+    //   return response.json();
+    // });
   }
 
   return (
@@ -71,6 +81,9 @@ function SignUp() {
           </Col>
         </Row>
       </Container>
+      {/* <Alert key="warning" variant="warning">
+        {error}
+      </Alert> */}
       <Form onSubmit={handleSubmit}>
         <Form.Group
           as={Row}
@@ -84,6 +97,7 @@ function SignUp() {
                 placeholder="Your Name"
                 onChange={handleFieldChange}
                 autoComplete="name"
+                name="name"
                 required
               />
             </FloatingLabel>
@@ -102,6 +116,7 @@ function SignUp() {
                 placeholder="name@example.com"
                 onChange={handleFieldChange}
                 autoComplete="email"
+                name="email"
                 required
               />
             </FloatingLabel>
@@ -120,6 +135,7 @@ function SignUp() {
                 placeholder="Password"
                 onChange={handleFieldChange}
                 autoComplete="new-password"
+                name="password"
                 required
               />
               <Form.Text id="passwordHelpBlock" muted>
