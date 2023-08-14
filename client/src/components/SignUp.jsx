@@ -71,38 +71,37 @@ function SignUp() {
           </Col>
         </Row>
       </Container>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group
+          as={Row}
+          className="mb-3 justify-content-md-center"
+          controlId="formPlaintextName"
+        >
+          <Col xs={6}>
+            <FloatingLabel label="Name" className="mb-3">
+              <Form.Control
+                type="name"
+                placeholder="Your Name"
+                onChange={handleFieldChange}
+                autoComplete="name"
+                required
+              />
+            </FloatingLabel>
+          </Col>
+        </Form.Group>
 
-      <Form.Group
-        as={Row}
-        className="mb-3 justify-content-md-center"
-        controlId="formPlaintextName"
-      >
-        <Col xs={6}>
-          <FloatingLabel
-            controlId="floatingInput"
-            label="Name"
-            className="mb-3"
-          >
-            <Form.Control type="name" placeholder="Your Name" required />
-          </FloatingLabel>
-        </Col>
-      </Form.Group>
-
-      <Form>
         <Form.Group
           as={Row}
           className="mb-3 justify-content-md-center"
           controlId="formPlaintextEmail"
         >
           <Col xs={6}>
-            <FloatingLabel
-              controlId="floatingInput"
-              label="Email address"
-              className="mb-3"
-            >
+            <FloatingLabel label="Email address" className="mb-3">
               <Form.Control
                 type="email"
                 placeholder="name@example.com"
+                onChange={handleFieldChange}
+                autoComplete="email"
                 required
               />
             </FloatingLabel>
@@ -116,7 +115,13 @@ function SignUp() {
         >
           <Col xs={6}>
             <FloatingLabel controlId="floatingPassword" label="Password">
-              <Form.Control type="password" placeholder="Password" required />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={handleFieldChange}
+                autoComplete="new-password"
+                required
+              />
               <Form.Text id="passwordHelpBlock" muted>
                 Your password must be 8-20 characters long, contain letters and
                 numbers, and must not contain spaces, special characters, or
