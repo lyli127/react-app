@@ -132,7 +132,7 @@ const updateRamenReview = (request, response) => {
     user_id,
   } = request.body;
   pool.query(
-    "UPDATE ramen SET restaurant_name=$1, dish_name=$2, photo_url=$3, ramen_type=$4, ramen_score=$5, noodle_texture=$6, noodle_score=$7, broth_type=$8, broth_score=$9, chashu_type=$10, chashu_score=$11, ajitama=$12, ajitama_score=$13, other_notes=$14, date_visited=$15, user_id=$16, WHERE id=$17",
+    "UPDATE ramen SET restaurant_name=$1, dish_name=$2, photo_url=$3, ramen_type=$4, ramen_score=$5, noodle_texture=$6, noodle_score=$7, broth_type=$8, broth_score=$9, chashu_type=$10, chashu_score=$11, ajitama=$12, ajitama_score=$13, other_notes=$14, date_visited=$15, user_id=$16 WHERE id=$17",
     [
       restaurant_name,
       dish_name,
@@ -150,12 +150,13 @@ const updateRamenReview = (request, response) => {
       other_notes,
       date_visited,
       user_id,
+      id,
     ],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`Ramen review modified with ID: ${id}`);
+      response.status(200).json(`Ramen review modified with ID: ${id}`);
     }
   );
 };
