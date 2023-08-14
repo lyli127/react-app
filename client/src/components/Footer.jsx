@@ -2,9 +2,9 @@ export function Footer() {
   return (
     <footer
       className="footer"
-      style={{ "text-align": "center", "background-image": "../assets/05.svg" }}
+      style={{ textAlign: "center", backgroundImage: "../assets/05.svg" }}
     >
-      <hr style={{ "margin-top": "10%" }} />
+      <hr style={{ marginTop: "10%" }} />
       <div className="container">
         <span className="text-muted">
           <br />
@@ -13,9 +13,9 @@ export function Footer() {
           <p>
             <span className="text-muted">Lylibete Tennikoff © 2021</span>
           </p>
-          <img src="../assets/linkedin.png" alt="linkedin" />
+          {/* <img src="../assets/linkedin.png" alt="linkedin" />
           <img src="ramen-app/client/src/assets/github.png" alt="github" />
-          <img src="../assets/email" alt="email" />
+          <img src="../assets/email" alt="email" /> */}
         </span>
       </div>
     </footer>
