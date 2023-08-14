@@ -11,7 +11,7 @@ export function Footer() {
           <img src="./favicon.ico" alt="ramen logo" width="100" />
           <br />
           <p>
-            <span className="text-muted">Lylibete Tennikoff © 2021</span>
+            <span className="text-muted">Lylibete Tennikoff © 2023</span>
           </p>
           {/* <img src="../assets/linkedin.png" alt="linkedin" />
           <img src="ramen-app/client/src/assets/github.png" alt="github" />
