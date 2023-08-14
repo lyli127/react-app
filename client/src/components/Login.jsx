@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Alert from "react-bootstrap/Alert";
 //My Components
 import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
@@ -15,6 +16,7 @@ import { AccountContext } from "./AccountContext";
 
 function Login() {
   const { setUser } = useContext(AccountContext);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [fields, setFields] = useState({
     email: "",
@@ -31,7 +33,7 @@ function Login() {
   function handleSubmit(event) {
     event.preventDefault();
     // console.log(fields);
-    fetch("/api/users/login", {
+    fetch("http://localhost:3000/api/login", {
       method: "POST",
       body: JSON.stringify(fields),
       headers: {
@@ -40,16 +42,26 @@ function Login() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setUser(...data);
-        navigate("/my-reviews");
-      })
-      .catch((error) => {
-        console.log(error);
-        if (response.status >= 400 && response.status < 600) {
-          throw new Error("Bad response from server");
+        if (!data) {
+          return console.log(
+            "No data returned from server. See SignUp.jsx, line 45"
+          );
         }
-        return response.json();
+        setUser({ loggedIn: data.loggedIn });
+        if (data.status) {
+          setError(data.status);
+        } else if (data.loggedIn) {
+          navigate("/my-reviews");
+        }
+        navigate("/home");
       });
+    // .catch((error) => {
+    //   console.log(error);
+    //   if (response.status >= 400 && response.status < 600) {
+    //     throw new Error("Bad response from server");
+    //   }
+    //   return response.json();
+    // });
   }
 
   return (
@@ -65,7 +77,9 @@ function Login() {
           </Col>
         </Row>
       </Container>
-
+      {/* <Alert key="warning" variant="warning">
+        {error}
+      </Alert> */}
       <Form onSubmit={handleSubmit}>
         <Form.Group
           as={Row}
