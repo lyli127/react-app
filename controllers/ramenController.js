@@ -174,9 +174,12 @@ const deleteRamenReview = (request, response) => {
   });
 };
 
+//create api to get all restaurant names for autocomplete feature
+
 export default {
   createRamenReview,
-  getAllRamenReviews,
+  getAllRamenReviewsByUser,
+  getRamenReviewByRestaurant,
   getRamenReviewById,
   updateRamenReview,
   deleteRamenReview,
