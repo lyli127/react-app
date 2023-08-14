@@ -69,10 +69,11 @@ const createRamenReview = (request, response) => {
 };
 
 //Read all ramen review
-const getAllRamenReviews = (request, response) => {
+const getAllRamenReviewsByUser = (request, response) => {
+  const user_id = parseInt(request.params.user_id);
   pool.query(
     "SELECT * FROM ramen WHERE user_id= $1 ORDER BY id DESC",
-    [id],
+    [user_id],
     (error, results) => {
       if (error) {
         throw error;
