@@ -13,6 +13,7 @@ import EditReviewPage from "./components/EditReviewPage";
 import FindRamen from "./components/FindRamen";
 import ViewRestaurantReviews from "./components/ViewRestaurantReviews";
 import { UserContext } from "./components/AccountContext";
+import { CreateReview } from "./components/CreateReview";
 
 const AuthContext = createContext();
 
@@ -69,6 +70,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/add-review" element={<CreateReview />} />
           <Route
             path="/my-reviews"
             element={
