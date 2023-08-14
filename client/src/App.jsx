@@ -10,6 +10,7 @@ import ViewAllReviewsPage from "./components/ViewAllReviewsPage";
 import EditReviewPage from "./components/EditReviewPage";
 import FindRamen from "./components/FindRamen";
 import ViewRestaurantReviews from "./components/ViewRestaurantReviews";
+
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
@@ -32,3 +33,57 @@ function AuthProvider({ children }) {
   }, [user]);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+
+function useAuth() {
+  return useContext(AuthContext);
+}
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  function handleAuthClick() {
+    if (isLoggedIn) {
+      // User is loggin out. Go to hompage.
+      navigate("/");
+    } else {
+      // User is logging in. Go to /my-reviews
+      navigate("/my-reviews");
+    }
+
+    setIsLoggedIn(() => !isLoggedIn);
+  }
+
+  return (
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home isLoggedIn={isLoggedIn} handleAuthClick={handleAuthClick} />
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/my-reviews"
+          element={
+            <ViewAllReviewsPage
+              isLoggedIn={isLoggedIn}
+              handleAuthClick={handleAuthClick}
+              user_id="1"
+            />
+          }
+        />
+        <Route path="/review/edit/:id" element={<EditReviewPage />} />
+        <Route path="/find-ramen" element={<FindRamen />} />
+        <Route
+          path="/reviews/${restaurantName}"
+          element={<ViewRestaurantReviews />}
+        />
+      </Routes>
+    </>
+  );
+}
+
+export { App, AuthContext };
