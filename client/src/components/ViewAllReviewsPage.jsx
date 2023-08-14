@@ -9,3 +9,60 @@ import { Footer } from "./Footer";
 import Button from "react-bootstrap/Button";
 import CardGroup from "react-bootstrap/CardGroup";
 import Spinner from "react-bootstrap/Spinner";
+
+function ViewAllReviewsPage(props) {
+  const [reviewList, setReviewList] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
+
+  function handleDelete(reviewId) {
+    // 1. Call your API to delete this review
+    // 2. If successful:
+    //    - Get the current `reviewList`
+    //    - Remove the review with the matching `reviewId`
+    //    - Use `setReviewList` to send the updated list
+  }
+
+  //get a list of all reviews on page load => save as state then loop over the list and display each one
+  useEffect(() => {
+    if (!isLoaded) {
+      fetch(`http://localhost:3000/api/review/${props.user_id}/all`)
+        .then((response) => response.json())
+        .then((data) => {
+          setReviewList(data);
+          setIsLoaded(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
+  //map over the list of reviews and display each one
+
+  // return (
+  //   <div>
+  //     {isLoaded ? (
+  //       reviewList.map((review) => (
+  //         <>
+  //           <p>{review.date_visited}</p>
+  //           <h3 key={review.id}>{review.restaurant_name}</h3>
+  //           <img src={review.photo_url} alt="dish photo" />
+  //           <p>{review.dish_name}</p>
+  //           <p>{review.ramen_score}</p>
+  //           <p>{review.ramen_type}</p>
+  //           <p>{review.noodle_score}</p>
+  //           <p>{review.noodle_texture}</p>
+  //           <p>{review.broth_score}</p>
+  //           <p>{review.broth_type}</p>
+  //           <p>{review.chashu_score}</p>
+  //           <p>{review.chashu_type}</p>
+  //           <p>{review.ajitama_score}</p>
+  //           <p>{review.ajitama}</p>
+  //           <p>{review.other_notes}</p>
+  //         </>
+  //       ))
+  //     ) : (
+  //       <p>Loading...</p>
+  //     )}
+  //   </div>
+  // );
