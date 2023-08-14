@@ -66,3 +66,38 @@ function ViewAllReviewsPage(props) {
   //     )}
   //   </div>
   // );
+  return (
+    <>
+      <MainNav
+        isLoggedIn={props.isLoggedIn}
+        handleAuthClick={props.handleAuthClick}
+      />
+
+      <CardGroup>
+        {isLoaded ? (
+          reviewList.map((review) => (
+            <Review data={review} className="review-card" key={review.id}>
+              <div className="button" style={{ padding: "1%" }}>
+                <Button
+                  variant="primary"
+                  onClick={() => navigate(`/review/edit/${review.id}`)}
+                >
+                  Edit Review
+                </Button>
+                {"      "}
+                <Button variant="secondary" onClick={handleDelete(review.id)}>
+                  Delete
+                </Button>
+              </div>
+            </Review>
+          ))
+        ) : (
+          <Spinner animation="border" size="lg" />
+        )}
+      </CardGroup>
+      <Footer />
+    </>
+  );
+}
+
+export default ViewAllReviewsPage;
