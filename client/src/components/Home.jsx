@@ -13,10 +13,7 @@ function HomePage(props) {
   return (
     <>
       {/* NAVBAR */}
-      <MainNav
-        isLoggedIn={props.isLoggedIn}
-        handleAuthClick={props.handleAuthClick}
-      />
+      <MainNav />
 
       {/* HOMEPAGE CONTENT */}
       <LoggedOutHomepage />
