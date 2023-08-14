@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users(
       id SERIAL PRIMARY KEY,
       first_name TEXT NOT NULL,
       email TEXT NOT NULL UNIQUE,
-      password_hash TEXT,
+      password_hash TEXT NOT NULL,
       ramen_type_pref TEXT,
       noodle_text_pref TEXT,
       broth_type_pref TEXT,
@@ -19,4 +19,3 @@ VALUES('Test3', 'test3@example.com', 'password123', 'Shoyu', 'Soft', 'Beef', 'ht
 
 -- ALTER TABLE table_name
 -- ADD CONSTRAINT constraint_name UNIQUE (column1);
-
