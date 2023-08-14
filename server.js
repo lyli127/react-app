@@ -4,18 +4,22 @@ import cors from "cors";
 import session from "express-session";
 import User from "./controllers/usersController.js";
 import RamenReview from "./controllers/ramenController.js";
+import Session from "./controllers/sessionController.js";
 import "dotenv/config";
-// import pool from "./pool.js";
-// import bcrypt from "bcrypt";
 
 const app = express();
 const Router = express.Router();
 const PORT = process.env.PORT || 3000;
 
+const corsOptions = {
+  origin: ["http://localhost:3000", "http://localhost:5173"],
+  credentials: true,
+};
+
 //middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(
   session({
     secret: process.env.SESSION_KEY,
@@ -27,6 +31,7 @@ app.use(
       secure: process.env.ENVIRONMENT === "production" ? true : "auto",
       httpOnly: true,
       sameSite: process.env.ENVIRONMENT === "production" ? "none" : "lax",
+      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
     },
   })
 );
@@ -44,6 +49,13 @@ app.delete("/api/users/:id", User.deleteUser);
 //SESSIONS
 
 //LOGIN
+app.get("/api/login", Session.getLogin);
+app.post("/api/login", Session.postLogin);
+
+//LOGOUT
+
+//SIGNUP
+app.post("/signup", Session.postSignup);
 
 //RAMEN REVIEW
 // GET
