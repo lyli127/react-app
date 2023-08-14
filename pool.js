@@ -24,3 +24,5 @@ const pool = new PG.Pool({
     ca: fs.readFileSync(CERT_PATH),
   },
 });
+
+export default pool;
