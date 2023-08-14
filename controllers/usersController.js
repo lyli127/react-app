@@ -10,6 +10,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const CERT_PATH = path.join(__dirname, "../certs/aws-rds-global-bundle.pem");
 
+const pool = new PG.Pool({
+  ssl: {
+    rejectUnauthorized: true,
+    // https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+    ca: fs.readFileSync(CERT_PATH),
+  },
+});
 
 // Create new user
 const createUser = (request, response) => {
@@ -46,6 +53,8 @@ const getUserById = (request, response) => {
 
 // Update user
 const updateUser = (request, response) => {
+  //  consider just all the data from the request.body,
+  // instead of spreading it over params and body
   const id = parseInt(request.params.id);
   const { name, email } = request.body;
 
@@ -67,6 +76,7 @@ const updateUser = (request, response) => {
 
 //Delete user account
 const deleteUser = (request, response) => {
+  // delete would normally be from the body, not the params
   const id = parseInt(request.params.id);
 
   pool.query("DELETE FROM users WHERE id = $1", [id], (error, results) => {
