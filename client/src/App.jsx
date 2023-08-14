@@ -12,85 +12,83 @@ import ViewAllReviewsPage from "./components/ViewAllReviewsPage";
 import EditReviewPage from "./components/EditReviewPage";
 import FindRamen from "./components/FindRamen";
 import ViewRestaurantReviews from "./components/ViewRestaurantReviews";
-import { UserContext } from "./components/AccountContext";
+// import { UserContext } from "./components/AccountContext";
 import { CreateReview } from "./components/CreateReview";
+import { AccountContext } from "./components/AccountContext";
 
-const AuthContext = createContext();
+// const AuthContext = createContext();
 
-function AuthProvider({ children }) {
-  const [user, setUser] = useLocalStorage("user", null);
+// function AuthProvider({ children }) {
+//   const [user, setUser] = useLocalStorage("user", null);
 
-  const navigate = useNavigate();
-  //call this function when you want to authenticate the user
-  async function login(data) {
-    setUser(data);
-    navigate("/");
-  }
-  //call this function to sign out logged in user
-  function logout() {
-    setUser(null);
-    navigate("/", { replace: true });
-  }
-  //memoization
-  const value = useMemo(() => {
-    user, login, logout;
-  }, [user]);
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
+//   const navigate = useNavigate();
+//   //call this function when you want to authenticate the user
+//   async function login(data) {
+//     setUser(data);
+//     navigate("/");
+//   }
+//   //call this function to sign out logged in user
+//   function logout() {
+//     setUser(null);
+//     navigate("/", { replace: true });
+//   }
+//   //memoization
+//   const value = useMemo(() => {
+//     user, login, logout;
+//   }, [user]);
+//   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+// }
 
-function useAuth() {
-  return useContext(AuthContext);
-}
+// function useAuth() {
+//   return useContext(AuthContext);
+// }
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  function handleAuthClick() {
-    if (isLoggedIn) {
-      // User is loggin out. Go to hompage.
-      navigate("/");
-    } else {
-      // User is logging in. Go to /my-reviews
-      navigate("/my-reviews");
-    }
+  // function handleAuthClick() {
+  //   if (isLoggedIn) {
+  //     // User is loggin out. Go to hompage.
+  //     navigate("/");
+  //   } else {
+  //     // User is logging in. Go to /my-reviews
+  //     navigate("/my-reviews");
+  //   }
 
-    setIsLoggedIn(() => !isLoggedIn);
-  }
+  //   setIsLoggedIn(() => !isLoggedIn);
+  // }
+
+  const { user } = useContext(AccountContext);
 
   return (
     <>
-      <UserContext>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home isLoggedIn={isLoggedIn} handleAuthClick={handleAuthClick} />
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/add-review" element={<CreateReview />} />
-          <Route
-            path="/my-reviews"
-            element={
-              <ViewAllReviewsPage
-                isLoggedIn={isLoggedIn}
-                handleAuthClick={handleAuthClick}
-                user_id="1"
-              />
-            }
-          />
-          <Route path="/review/edit/:id" element={<EditReviewPage />} />
-          <Route path="/find-ramen" element={<FindRamen />} />
-          <Route
-            path="/reviews/${restaurantName}"
-            element={<ViewRestaurantReviews />}
-          />
-        </Routes>
-      </UserContext>
+      <Routes>
+        {user.loggedIn === null ? (
+          " "
+        ) : (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/add-review" element={<CreateReview />} />
+            <Route
+              path="/my-reviews"
+              element={<ViewAllReviewsPage user_id="1" />}
+            />
+            <Route path="/find-ramen" element={<FindRamen />} />
+            <Route
+              path="/reviews/${restaurantName}"
+              element={<ViewRestaurantReviews />}
+            />
+            {/* <Route element={<PrivateRoutes />}> */}
+            <Route path="/review/edit/:id" element={<EditReviewPage />} />
+            {/* </Route> */}
+          </>
+        )}
+      </Routes>
     </>
   );
 }
 
-export { App, AuthContext };
+export { App };
