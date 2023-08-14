@@ -14,6 +14,50 @@ import { Footer } from "./Footer";
 import { AccountContext } from "./AccountContext";
 
 function SignUp() {
+  const { setUser } = useContext(AccountContext);
+  const navigate = useNavigate();
+  const [fields, setFields] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  function handleFieldChange(event) {
+    setFields({
+      ...fields,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // console.log(fields);
+    fetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify(fields),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data) {
+          return console.log(
+            "No data returned from server. See SignUp.jsx, line 45"
+          );
+        }
+        setUser(...data);
+        navigate("/find-ramen");
+      })
+      .catch((error) => {
+        console.log(error);
+        if (response.status >= 400 && response.status < 600) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      });
+  }
+
   return (
     <>
       <MainNav />
