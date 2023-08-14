@@ -15,7 +15,7 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const CERT_PATH = path.join(__dirname, "../certs/aws-rds-global-bundle.pem");
+const CERT_PATH = path.join(__dirname, "/certs/aws-rds-global-bundle.pem");
 
 const pool = new PG.Pool({
   ssl: {
