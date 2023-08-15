@@ -38,7 +38,7 @@ const CreateReview = () => {
   const handleSubmission = (e) => {
     e.preventDefault();
     console.log(fields);
-    fetch("/api/review", {
+    fetch("http://localhost:3000/api/review", {
       method: "POST",
       body: JSON.stringify(fields),
       headers: {
