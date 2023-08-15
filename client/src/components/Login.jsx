@@ -51,7 +51,7 @@ function Login() {
         if (data.status) {
           setError(data.status);
         } else if (data.loggedIn) {
-          navigate("/my-reviews");
+          // navigate("/my-reviews");
         }
         navigate("/home");
       });
