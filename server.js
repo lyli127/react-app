@@ -23,16 +23,8 @@ app.use(cors(corsOptions));
 app.use(
   session({
     secret: process.env.SESSION_KEY,
-    credentials: "true",
-    name: "sid",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      secure: process.env.ENVIRONMENT === "production" ? true : "auto",
-      httpOnly: true,
-      sameSite: process.env.ENVIRONMENT === "production" ? "none" : "lax",
-      maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
-    },
   })
 );
 
@@ -61,7 +53,10 @@ app.post("/signup", Session.postSignup);
 // GET
 app.get("/api/review/:id", RamenReview.getRamenReviewById);
 app.get("/api/review/:user_id/all", RamenReview.getAllRamenReviewsByUser);
-app.get("/api/review/:restaurant_name", RamenReview.getRamenReviewByRestaurant);
+app.get(
+  "/api/:restaurant_name/reviews",
+  RamenReview.getRamenReviewByRestaurant
+);
 // POST
 app.post("/api/review", RamenReview.createRamenReview);
 // PUT
