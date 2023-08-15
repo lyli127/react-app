@@ -78,7 +78,7 @@ function App() {
             />
             <Route path="/find-ramen" element={<FindRamen />} />
             <Route
-              path="/reviews/${restaurantName}"
+              path="/reviews/:restaurantName"
               element={<ViewRestaurantReviews />}
             />
             {/* <Route element={<PrivateRoutes />}> */}
