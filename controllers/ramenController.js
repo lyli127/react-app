@@ -105,8 +105,8 @@ const getRamenReviewByRestaurant = (request, response) => {
       if (error) {
         throw error;
       }
-      response.status(200).json(results.rows[0]);
-      // console.log(results.rows[0]);
+      response.status(200).json(results.rows);
+      console.log(results.rows);
     }
   );
 };
