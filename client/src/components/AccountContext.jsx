@@ -14,7 +14,7 @@ const UserContext = ({ children }) => {
       .then((response) => response.json())
       .then((data) => {
         setUser({ loggedIn: data.loggedIn });
-        navigate("/my-reviews");
+        // navigate("/my-reviews");
       })
       .catch((error) => {
         console.log(error);
