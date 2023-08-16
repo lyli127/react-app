@@ -1,14 +1,6 @@
 import "dotenv/config";
 import PG from "pg";
 
-// const pool = new PG.Pool({
-//   user: process.env.PGUSER,
-//   host: process.env.PGHOST,
-//   database: process.env.PGDATABASE,
-//   password: process.env.PGPASSWORD,
-//   port: process.env.PGPORT,
-// });
-
 import path from "node:path";
 import fs from "node:fs";
 import { fileURLToPath } from "url";
@@ -24,5 +16,13 @@ const pool = new PG.Pool({
     ca: fs.readFileSync(CERT_PATH),
   },
 });
+
+// const pool = new PG.Pool({
+//   user: process.env.PGUSER,
+//   host: process.env.PGHOST,
+//   database: process.env.PGDATABASE,
+//   password: process.env.PGPASSWORD,
+//   port: process.env.PGPORT,
+// });
 
 export default pool;
