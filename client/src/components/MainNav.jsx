@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 //Bootstrap
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 
 //My Components
@@ -29,9 +30,17 @@ export function MainNav(props) {
             <Navbar.Text>
               <Link to={`/find-ramen`}>Find Ramen</Link>
             </Navbar.Text>
-            <Navbar.Text>
+            {/* <Navbar.Text>
               <Link to={`/my-reviews`}>Reviews</Link>
-            </Navbar.Text>
+            </Navbar.Text> */}
+            <NavDropdown title="Reviews" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/add-review">Add Review</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="my-reviews">My Reviews</NavDropdown.Item>
+              <NavDropdown.Item href="/restaurant">
+                Restaurant Reviews
+              </NavDropdown.Item>
+            </NavDropdown>
             <Navbar.Text>
               <Link to={`/signup`}>Sign Up</Link>
             </Navbar.Text>

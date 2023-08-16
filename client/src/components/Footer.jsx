@@ -1,3 +1,8 @@
+import linkedin from "../assets/linkedin.png";
+import github from "../assets/github.png";
+import background from "../assets/background.svg";
+import Image from "react-bootstrap/Image";
+
 export function Footer() {
   return (
     <footer
@@ -13,9 +18,9 @@ export function Footer() {
           <p>
             <span className="text-muted">Lylibete Tennikoff © 2023</span>
           </p>
-          {/* <img src="../assets/linkedin.png" alt="linkedin" />
-          <img src="ramen-app/client/src/assets/github.png" alt="github" />
-          <img src="../assets/email" alt="email" /> */}
+          {/* <Image src={linkedin} alt="linkedin" />
+          <Image src={github} alt="github" /> */}
+          {/* <Image src="../assets/email" alt="email" /> */}
         </span>
       </div>
     </footer>
