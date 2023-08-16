@@ -90,6 +90,7 @@ const CreateReview = () => {
             name="restaurant_name"
             value={fields.restaurant_name}
             onChange={handleInputChange}
+            placeholder="Enter restaurant name"
           />
         </Form.Group>
         <Form.Group controlId="photo_url">
@@ -99,6 +100,7 @@ const CreateReview = () => {
             name="photo_url"
             value={fields.photo_url}
             onChange={handleInputChange}
+            placeholder="Enter photo URL"
           />
         </Form.Group>
         <Form.Group controlId="dish_name">
@@ -108,6 +110,7 @@ const CreateReview = () => {
             name="dish_name"
             value={fields.dish_name}
             onChange={handleInputChange}
+            placeholder="Enter dish name"
           />
         </Form.Group>
         <Form.Group controlId="ramen_score">
@@ -117,6 +120,7 @@ const CreateReview = () => {
             name="ramen_score"
             value={fields.ramen_score}
             onChange={handleInputChange}
+            placeholder="Enter overall score"
           />
         </Form.Group>
         <Form.Group controlId="ramen_type">
@@ -126,6 +130,7 @@ const CreateReview = () => {
             name="ramen_type"
             value={fields.ramen_type}
             onChange={handleInputChange}
+            placeholder="Enter ramen type"
           />
         </Form.Group>
         <Form.Group controlId="noodle_score">
@@ -139,12 +144,14 @@ const CreateReview = () => {
         </Form.Group>
         <Form.Group controlId="noodle_texture">
           <Form.Label>Noodle Texture</Form.Label>
-          <Form.Control
-            type="text"
-            name="noodle_texture"
-            value={fields.noodle_texture}
-            onChange={handleInputChange}
-          />
+          <Form.Select aria-label="noodle-texture">
+            <option>Choose Noodle Texture</option>
+            <option value="Very Soft">Very Soft</option>
+            <option value="Soft">Soft</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+            <option value="very Hard">Very Hard</option>
+          </Form.Select>
         </Form.Group>
         <Form.Group controlId="broth_score">
           <Form.Label>Broth Score</Form.Label>
@@ -153,6 +160,7 @@ const CreateReview = () => {
             name="broth_score"
             value={fields.broth_score}
             onChange={handleInputChange}
+            placeholder="Enter broth score"
           />
         </Form.Group>
         <Form.Group controlId="broth_type">
@@ -162,6 +170,7 @@ const CreateReview = () => {
             name="broth_type"
             value={fields.broth_type}
             onChange={handleInputChange}
+            placeholder="Miso, Shoyu, Tonkotsu..."
           />
         </Form.Group>
         <Form.Group controlId="chashu_score">
@@ -175,12 +184,13 @@ const CreateReview = () => {
         </Form.Group>
         <Form.Group controlId="chashu_type">
           <Form.Label>Chashu Type</Form.Label>
-          <Form.Control
-            type="text"
-            name="chashu_type"
-            value={fields.chashu_type}
-            onChange={handleInputChange}
-          />
+          <Form.Select aria-label="noodle-texture">
+            <option>Choose Chashu Type</option>
+            <option value="Pork">Pork</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Other">Other</option>
+          </Form.Select>
         </Form.Group>
         <Form.Group controlId="ajitama_score">
           <Form.Label>Ajitama Score</Form.Label>
@@ -211,6 +221,9 @@ const CreateReview = () => {
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
+        </Button>
+        <Button variant="secondary" onClick={() => navigate(`/my-reviews`)}>
+          Cancel
         </Button>
       </Form>
       <Footer />
