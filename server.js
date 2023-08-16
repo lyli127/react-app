@@ -21,7 +21,7 @@ app.use(cors(corsOptions));
 //RAMEN REVIEW
 // GET
 app.get("/api/review/:id", RamenReview.getRamenReviewById);
-app.get("/api/review/:user_id/all", RamenReview.getAllRamenReviewsByUser);
+// app.get("/api/review/:user_id/all", RamenReview.getAllRamenReviewsByUser);
 app.get(
   "/api/:restaurant_name/reviews",
   RamenReview.getRamenReviewByRestaurant
@@ -31,6 +31,6 @@ app.get("/api/reviews/all", RamenReview.getAllRamenReviews);
 app.post("/api/review", RamenReview.createRamenReview);
 
 // DELETE
-app.delete("/api/review/:id", RamenReview.deleteRamenReview);
+// app.delete("/api/review/:id", RamenReview.deleteRamenReview);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

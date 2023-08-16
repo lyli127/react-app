@@ -1,21 +1,5 @@
 import "dotenv/config";
-import PG from "pg";
-
-import path from "node:path";
-import fs from "node:fs";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const CERT_PATH = path.join(__dirname, "../certs/aws-rds-global-bundle.pem");
-
-const pool = new PG.Pool({
-  ssl: {
-    rejectUnauthorized: true,
-    // https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
-    ca: fs.readFileSync(CERT_PATH),
-  },
-});
+import { pool } from "./pool.js";
 
 //Create new ramen review
 const createRamenReview = (request, response) => {
@@ -35,10 +19,9 @@ const createRamenReview = (request, response) => {
     ajitama_score,
     other_notes,
     date_visited,
-    user_id,
   } = request.body;
   pool.query(
-    "INSERT INTO ramen (restaurant_name, dish_name, photo_url, ramen_type,ramen_score, noodle_texture, noodle_score, broth_type, broth_score, chashu_type, chashu_score, ajitama, ajitama_score, other_notes, date_visited, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING *",
+    "INSERT INTO ramen (restaurant_name, dish_name, photo_url, ramen_type,ramen_score, noodle_texture, noodle_score, broth_type, broth_score, chashu_type, chashu_score, ajitama, ajitama_score, other_notes, date_visited) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING *",
     [
       restaurant_name,
       dish_name,
@@ -55,7 +38,6 @@ const createRamenReview = (request, response) => {
       ajitama_score,
       other_notes,
       date_visited,
-      user_id,
     ],
     (error, results) => {
       if (error) {
@@ -100,6 +82,21 @@ const getRamenReviewByRestaurant = (request, response) => {
   const restaurantName = request.params.restaurant_name;
   pool.query(
     "SELECT * FROM ramen WHERE restaurant_name = $1",
+    [restaurantName],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+      console.log(results.rows);
+    }
+  );
+};
+
+//get ALL reviews
+const getAllRamenReviews = (request, response) => {
+  pool.query(
+    "SELECT * FROM ramen ORDER BY id DESC",
     [restaurantName],
     (error, results) => {
       if (error) {
@@ -180,6 +177,7 @@ export default {
   createRamenReview,
   getAllRamenReviewsByUser,
   getRamenReviewByRestaurant,
+  getAllRamenReviews,
   getRamenReviewById,
   updateRamenReview,
   deleteRamenReview,
