@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { pool } from "./pool.js";
+import pool from "../pool.js";
 
 //Create new ramen review
 const createRamenReview = (request, response) => {
