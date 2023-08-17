@@ -36,7 +36,6 @@ export function MainNav(props) {
             <NavDropdown title="Reviews" id="basic-nav-dropdown">
               <NavDropdown.Item href="/add-review">Add Review</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="my-reviews">My Reviews</NavDropdown.Item>
               <NavDropdown.Item href="/restaurant">
                 Restaurant Reviews
               </NavDropdown.Item>
