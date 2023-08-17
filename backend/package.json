@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/lyli127/react-app#readme",
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.16.2",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
