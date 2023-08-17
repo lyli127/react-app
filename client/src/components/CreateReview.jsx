@@ -11,10 +11,9 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 //My Components
 import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
-import { AccountContext } from "./AccountContext";
 
 const CreateReview = () => {
-  const { setUser } = useContext(AccountContext);
+  // const { setUser } = useContext(AccountContext);
   const navigate = useNavigate();
 
   const [fields, setFields] = useState({
