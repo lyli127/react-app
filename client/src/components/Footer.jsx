@@ -1,6 +1,6 @@
-import linkedin from "../assets/linkedin.png";
-import github from "../assets/github.png";
-import background from "../assets/background.svg";
+// import linkedin from "../assets/linkedin.png";
+// import github from "../assets/github.png";
+// import background from "../assets/background.svg";
 import Image from "react-bootstrap/Image";
 
 export function Footer() {
