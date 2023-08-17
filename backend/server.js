@@ -9,8 +9,19 @@ import "dotenv/config";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+export let BASE_URL_FRONTEND;
+export let BASE_URL_BACKEND;
+
+if (process.env.NODE_ENV === "production") {
+  BASE_URL_FRONTEND = "https://ramen-app.lyli.dev";
+  BASE_URL_BACKEND = "https://api.ramen-app.lyli.dev";
+} else {
+  BASE_URL_FRONTEND = "http://localhost:5173";
+  BASE_URL_BACKEND = "http://localhost:3000";
+}
+
 const corsOptions = {
-  origin: ["http://localhost:3000", "http://localhost:5173"],
+  origin: [BASE_URL_BACKEND, BASE_URL_FRONTEND],
   credentials: true,
 };
 
