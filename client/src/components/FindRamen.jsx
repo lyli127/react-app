@@ -23,17 +23,6 @@ const mapOptions = {
   mapId: "DEMO_MAP_ID",
 };
 
-// Create custom glyph for markers
-const glyphImg = document.createElement("img");
-glyphImg.src = ramenBowl;
-glyphImg.width = 64 / 2;
-const glyphPinElm = new PinElement({
-  // background: "red",
-  glyph: glyphImg,
-  borderColor: "#333",
-  scale: 1.7,
-});
-
 /**
  * Function to plot restaurants on our map.
  *
@@ -59,11 +48,24 @@ function plotRestaurantsOnMap(restaurantsData, map) {
 
     // Create an info window for each place
     const infoWindow = new InfoWindow({
-      content: `<h3 style="color:black">${restaurant.name}</h3><p>${restaurant.slug}</p>`,
+      content: `
+        <h3 style="color:black">${restaurant.name}</h3>
+        <a href="/restaurant/${restaurant.slug}">View Reviews</a>
+        `,
       ariaLabel: restaurant.name,
     });
     allInfoWindows.push(infoWindow);
 
+    // Create a funky glyph for the red location marker
+    const glyphImg = document.createElement("img");
+    glyphImg.src = ramenBowl;
+    glyphImg.width = 64 / 2;
+    const glyphPinElm = new PinElement({
+      // background: "red",
+      glyph: glyphImg,
+      borderColor: "#333",
+      scale: 1.7,
+    });
     // Create a marker for each place
     const marker = new AdvancedMarkerElement({
       map,
@@ -97,14 +99,6 @@ function plotRestaurantsOnMap(restaurantsData, map) {
 function FindRamen() {
   const mapContainerRef = useRef(null);
 
-  // useEffect(() => {
-  //   const placesService = new PlacesService(map);
-
-  //   placesService.findPlaceFromQuery(request, (results, status) => {
-  //     addPlacesToMap(results, map);
-  //   });
-  // }, []);
-
   //loop through lat long to add markers to map
 
   useEffect(() => {
@@ -117,7 +111,6 @@ function FindRamen() {
         return response.json();
       })
       .then((data) => {
-        // setRestaurantsData(data);
         console.log(data);
         plotRestaurantsOnMap(data, map);
       })
