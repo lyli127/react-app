@@ -1,5 +1,4 @@
 import "dotenv/config";
-import slugify from "slugify";
 import pool from "../pool.js";
 
 const getAllInfoFromRest = async (request, response) => {
@@ -17,7 +16,9 @@ const getAllInfoFromRest = async (request, response) => {
 //get all restaurant info
 const getAllRestaurants = async (request, response) => {
   try {
-    const dbResp = await pool.query("SELECT * FROM restaurants");
+    const dbResp = await pool.query(
+      "SELECT * FROM restaurants ORDER BY name ASC"
+    );
     return response.json(dbResp.rows);
   } catch (error) {
     console.error(error.message);
