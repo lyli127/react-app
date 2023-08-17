@@ -1,7 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import RamenReview from "./controllers/ramenController.js";
+import Review from "./controllers/ramenController.js";
+import Restaurant from "./controllers/restaurantController.js";
 
 import "dotenv/config";
 
@@ -20,17 +21,19 @@ app.use(cors(corsOptions));
 
 //RAMEN REVIEW
 // GET
-app.get("/api/review/:id", RamenReview.getRamenReviewById);
+app.get("/api/review/:id", Review.getRamenReviewById);
 // app.get("/api/review/:user_id/all", RamenReview.getAllRamenReviewsByUser);
-app.get(
-  "/api/:restaurant_name/reviews",
-  RamenReview.getRamenReviewByRestaurant
-);
-app.get("/api/reviews/all", RamenReview.getAllRamenReviews);
+app.get("/api/:restaurant_name/reviews", Review.getRamenReviewByRestaurant);
+app.get("/api/reviews/all", Review.getAllRamenReviews);
 // POST
-app.post("/api/review", RamenReview.createRamenReview);
+app.post("/api/review", Review.createRamenReview);
 
 // DELETE
 // app.delete("/api/review/:id", RamenReview.deleteRamenReview);
+
+//RESTAURANT
+// GET
+app.get("/api/restaurant/:slug", Restaurant.getLatLong);
+app.get("/api/restaurants/all", Restaurant.getAllRestaurants);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
