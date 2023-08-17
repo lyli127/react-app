@@ -11,8 +11,6 @@ import { Footer } from "./Footer";
 import Button from "react-bootstrap/Button";
 import CardGroup from "react-bootstrap/CardGroup";
 import Spinner from "react-bootstrap/Spinner";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 
 function ViewRestaurantReviews({ restaurantName }) {
   const [reviewList, setReviewList] = useState([]);
@@ -21,7 +19,7 @@ function ViewRestaurantReviews({ restaurantName }) {
   //get a list of all reviews on page load => save as state then loop over the list and display each one
   useEffect(() => {
     if (!isLoaded) {
-      fetch(`http://localhost:3000/api/reviews/all`)
+      fetch(`http://localhost:3000/api/:restaurant_name/reviews`)
         .then((response) => response.json())
         .then((data) => {
           setReviewList(data);
