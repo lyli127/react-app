@@ -2,11 +2,10 @@ import "dotenv/config";
 import slugify from "slugify";
 import pool from "../pool.js";
 
-//Get Lat/Long from database for Google Maps
-const getLatLong = async (request, response) => {
+const getAllInfoFromRest = async (request, response) => {
   try {
     const dbResp = await pool.query(
-      "SELECT latitude, longitude FROM restaurants WHERE slug = $1",
+      "SELECT * FROM restaurants WHERE slug = $1",
       [request.params.slug]
     );
     return response.json(dbResp.rows[0]);
@@ -25,4 +24,4 @@ const getAllRestaurants = async (request, response) => {
   }
 };
 
-export default { getLatLong, getAllRestaurants };
+export default { getAllRestaurants, getAllInfoFromRest };
