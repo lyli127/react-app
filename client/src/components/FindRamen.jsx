@@ -1,5 +1,5 @@
 import { Loader } from "@googlemaps/js-api-loader";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
@@ -9,12 +9,10 @@ const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_DEV_KEY,
   version: "weekly",
   libraries: ["places", "core", "marker"],
-  // ...additionalOptions,
 });
 
 const { LatLng, LatLngBounds } = await loader.importLibrary("core");
 const { Map, InfoWindow } = await loader.importLibrary("maps");
-const { PlacesService } = await loader.importLibrary("places");
 const { AdvancedMarkerElement, PinElement } = await loader.importLibrary(
   "marker"
 );
@@ -36,73 +34,61 @@ const glyphPinElm = new PinElement({
   scale: 1.7,
 });
 
-// This of this as a fancy search query:
-const request = {
-  query: "Ramen in NSW",
-  fields: [
-    "name",
-    // "rating", // 1-5
-    // "website",
-    "geometry",
-    // "businessStatus", // ie. "OPERATIONAL", etc.
-    // "hasWheelchairAccessibleEntrance",
-  ],
-  // includedType: "restaurant",
-  // // isOpenNow: true,
-  // language: "en-AU",
-  // maxResultCount: 7,
-  // minRating: 3.2,
-  // region: "au",
-  // useStrictTypeFiltering: false,
-};
-
-// Docs: https://developers.google.com/maps/documentation/javascript/place-search
-
-// const { places } = new PlacesService.findPlaceFromQuery(request);
-
-const bound = new LatLngBounds();
-
-function addPlacesToMap(placeArr, map) {
-  // Get a reference to all the info windows so we can close them when a new
-  // one is opened.
+/**
+ * Function to plot restaurants on our map.
+ *
+ * This will loop over the restaurant data and get the lat/lng, add the marker with that info,
+ * and include the name and use the slug to add a link to the review page for the restaurant.
+ *
+ * @param {Array} restaurantsData - array of restaurant objects with name, slug, latitude, longitude
+ * @param {google.maps.MapsLibrary.Map} map - instance of the Map class to plot restaurants on
+ */
+function plotRestaurantsOnMap(restaurantsData, map) {
+  // Get a reference to all the info windows so we can close them all at once
   const allInfoWindows = [];
 
-  if (placeArr.length) {
-    // Loop through and get all the results.
-    placeArr.forEach((place) => {
-      // Create an info window for each place
-      const infoWindow = new InfoWindow({
-        content: `<h3>${place.name}</h3><p>${place.website}</p>`,
-        ariaLabel: place.name,
-      });
+  // Set up bounds so we can resize the map to fit all the markers
+  const bounds = new LatLngBounds();
 
-      allInfoWindows.push(infoWindow);
+  // Start looping over the restaurants
+  restaurantsData.forEach((restaurant) => {
+    const position = new LatLng(
+      Number(restaurant.latitude),
+      Number(restaurant.longitude)
+    );
 
-      // Create a marker for each place
-      const marker = new AdvancedMarkerElement({
-        map,
-        position: place.geometry.location,
-        title: place.name,
-        content: glyphPinElm.element,
-      });
-
-      // Add an event listener on the marker to open the info window
-      marker.addListener("click", () => {
-        // Close all the others...
-        allInfoWindows.forEach((infoWindow) => infoWindow.close());
-
-        // ...and open the one just clicked
-        infoWindow.open({ anchor: marker, map });
-      });
-
-      // Resize the map to fit all the markers
-      bound.extend(new LatLng(place.geometry.location));
+    // Create an info window for each place
+    const infoWindow = new InfoWindow({
+      content: `<h3 style="color:black">${restaurant.name}</h3><p>${restaurant.slug}</p>`,
+      ariaLabel: restaurant.name,
     });
-  } else {
-    console.log("No results");
-  }
+    allInfoWindows.push(infoWindow);
 
-  map.setCenter(bound.getCenter());
+    // Create a marker for each place
+    const marker = new AdvancedMarkerElement({
+      map,
+      position,
+      title: restaurant.name,
+      content: glyphPinElm.element,
+    });
+
+    // Add an event listener on the marker to open the info window
+    marker.addListener("click", () => {
+      // Close all the others...
+      allInfoWindows.forEach((oneOfOurInfoWindows) =>
+        oneOfOurInfoWindows.close()
+      );
+
+      // ...and open the one just clicked
+      infoWindow.open({ anchor: marker, map });
+    });
+
+    // Resize the map to fit this restaurant
+    bounds.extend(position);
+  });
+
+  // Finally, use `bounds` to center and zoom the map
+  map.setCenter(bounds.getCenter());
 }
 
 /**
@@ -111,13 +97,33 @@ function addPlacesToMap(placeArr, map) {
 function FindRamen() {
   const mapContainerRef = useRef(null);
 
-  useEffect(() => {
-    const map = new Map(mapContainerRef.current, mapOptions);
-    const placesService = new PlacesService(map);
+  // useEffect(() => {
+  //   const placesService = new PlacesService(map);
 
-    placesService.findPlaceFromQuery(request, (results, status) => {
-      addPlacesToMap(results, map);
-    });
+  //   placesService.findPlaceFromQuery(request, (results, status) => {
+  //     addPlacesToMap(results, map);
+  //   });
+  // }, []);
+
+  //loop through lat long to add markers to map
+
+  useEffect(() => {
+    // Create our map instance
+    const map = new Map(mapContainerRef.current, mapOptions);
+
+    //get info from restaurants and plot data on map
+    fetch(`http://localhost:3000/api/restaurants/all`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // setRestaurantsData(data);
+        console.log(data);
+        plotRestaurantsOnMap(data, map);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   return (

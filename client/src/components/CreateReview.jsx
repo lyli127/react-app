@@ -7,13 +7,11 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
 //My Components
 import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
 
 const CreateReview = () => {
-  // const { setUser } = useContext(AccountContext);
   const navigate = useNavigate();
 
   const [fields, setFields] = useState({
@@ -82,6 +80,7 @@ const CreateReview = () => {
             onChange={handleInputChange}
           />
         </Form.Group>
+        {/* Loop through restaurant names to add them to the dropdown  */}
         <Form.Group controlId="restaurant_name">
           <Form.Label>Restaurant Name</Form.Label>
           <Form.Control
