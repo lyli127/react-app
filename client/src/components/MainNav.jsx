@@ -28,16 +28,16 @@ export function MainNav(props) {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-evenly">
             <Navbar.Text>
+              <Link to={`/`}>Home</Link>
+            </Navbar.Text>
+            <Navbar.Text>
               <Link to={`/find-ramen`}>Find Ramen</Link>
             </Navbar.Text>
-            {/* <Navbar.Text>
-              <Link to={`/my-reviews`}>Reviews</Link>
-            </Navbar.Text> */}
             <NavDropdown title="Reviews" id="basic-nav-dropdown">
               <NavDropdown.Item href="/add-review">Add Review</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/restaurant">
-                Restaurant Reviews
+              <NavDropdown.Item href="/all-reviews">
+                All Reviews
               </NavDropdown.Item>
             </NavDropdown>
           </Navbar.Collapse>
