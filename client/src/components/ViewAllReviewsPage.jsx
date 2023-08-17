@@ -42,40 +42,9 @@ function ViewAllReviewsPage(props) {
     }
   }, []);
   //map over the list of reviews and display each one
-
-  // return (
-  //   <div>
-  //     {isLoaded ? (
-  //       reviewList.map((review) => (
-  //         <>
-  //           <p>{review.date_visited}</p>
-  //           <h3 key={review.id}>{review.restaurant_name}</h3>
-  //           <img src={review.photo_url} alt="dish photo" />
-  //           <p>{review.dish_name}</p>
-  //           <p>{review.ramen_score}</p>
-  //           <p>{review.ramen_type}</p>
-  //           <p>{review.noodle_score}</p>
-  //           <p>{review.noodle_texture}</p>
-  //           <p>{review.broth_score}</p>
-  //           <p>{review.broth_type}</p>
-  //           <p>{review.chashu_score}</p>
-  //           <p>{review.chashu_type}</p>
-  //           <p>{review.ajitama_score}</p>
-  //           <p>{review.ajitama}</p>
-  //           <p>{review.other_notes}</p>
-  //         </>
-  //       ))
-  //     ) : (
-  //       <p>Loading...</p>
-  //     )}
-  //   </div>
-  // );
   return (
     <>
-      <MainNav
-        isLoggedIn={props.isLoggedIn}
-        handleAuthClick={props.handleAuthClick}
-      />
+      <MainNav />
 
       <CardGroup>
         {isLoaded ? (
