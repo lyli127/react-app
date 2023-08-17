@@ -33,7 +33,7 @@ app.post("/api/review", Review.createRamenReview);
 
 //RESTAURANT
 // GET
-app.get("/api/restaurant/:slug", Restaurant.getLatLong);
+app.get("/api/restaurant/:slug", Restaurant.getAllInfoFromRest);
 app.get("/api/restaurants/all", Restaurant.getAllRestaurants);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
