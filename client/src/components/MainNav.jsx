@@ -8,10 +8,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 
 //My Components
-import { AccountContext } from "./AccountContext";
+// import { AccountContext } from "./AccountContext";
 
 export function MainNav(props) {
-  const { user, setUser } = useContext(AccountContext);
+  // const { user, setUser } = useContext(AccountContext);
 
   return (
     <>
@@ -41,12 +41,6 @@ export function MainNav(props) {
                 Restaurant Reviews
               </NavDropdown.Item>
             </NavDropdown>
-            <Navbar.Text>
-              <Link to={`/signup`}>Sign Up</Link>
-            </Navbar.Text>
-            <Navbar.Text>
-              <Link to={`/login`}>Login ({`${user.loggedIn}`})</Link>
-            </Navbar.Text>
           </Navbar.Collapse>
         </Container>
       </Navbar>
