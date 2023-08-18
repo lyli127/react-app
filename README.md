@@ -23,6 +23,7 @@ This document provides an overview of the Ramen Restaurant Finder project, inclu
 - Express.js: A fast and minimalist web application framework for Node.js.
 - Postgres: A powerful, open source object-relational database system.
 - PG: A PostgreSQL client for Node.js.
+- Google Maps API: A JavaScript API for customising and embedding Google Maps.
 
 ## Project Overview
 
