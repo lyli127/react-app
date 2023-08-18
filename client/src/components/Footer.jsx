@@ -14,7 +14,9 @@ export function Footer() {
           <img src={shiba} alt="ramen logo" width="100" />
           <br />
           <p>
-            <span className="text-muted">Lylibete Tennikoff © 2023</span>
+            <span className="text-muted">
+              Lylibete Tennikoff © {new Date().getFullYear()}
+            </span>
           </p>
         </span>
       </div>
