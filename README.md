@@ -1,5 +1,8 @@
 # Ramen Review App
 
+You can access the app via the link below:
+https://ramen-app.lyli.dev
+
 # Ramen Restaurant Finder ReadMe
 
 This document provides an overview of the Ramen Restaurant Finder project, including the technologies used, installation instructions, user stories, wireframes, and any challenges faced during development.
