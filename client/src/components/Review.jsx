@@ -9,7 +9,10 @@ export function Review({ data, children }) {
     day: "numeric",
   };
   return (
-    <Card style={{ width: "18rem" }} className="mb-2">
+    <Card
+      style={{ width: "18rem", boxShadow: "0 0 15px hsl(0, 0%, 10%)" }}
+      className="mb-4 p-2"
+    >
       <Card.Img
         variant="top"
         src={
