@@ -25,21 +25,21 @@ function HomePage() {
       {/* HOMEPAGE CONTENT */}
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
-          <Image src={ramenPic2edited} fluid />
+          <Image src={ramenPic2edited} alt="ramen image" fluid />
           <Carousel.Caption>
             <h3>Get Ramen Specials</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <Image src={noodlesEdited} fluid />
+          <Image src={noodlesEdited} alt="noodles image" fluid />
           <Carousel.Caption>
             <h3>Discover New Ramen Spots</h3>
             <p>You'll get access to all the best ramen spots in your area.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <Image src={ramenPic1} fluid />
+          <Image src={ramenPic1} alt="ramen shop image" fluid />
           <Carousel.Caption>
             <h3>Sign Up Today</h3>
             <p>It's free and you'll get access to exclusive deals.</p>
