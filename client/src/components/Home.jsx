@@ -8,10 +8,9 @@ import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
 
 //Images
-import noodlesCropped from "../assets/noodlesEdited.jpg";
-// import ramenPic2edited from "../assets/ramenPic2edited.jpg";
-import ramenShopCropped from "../assets/ramenShopCropped.jpg";
-import bowlOfRamenResized from "../assets/bowlOfRamenResized.jpg";
+import noodles from "../assets/noodles.jpg";
+import ramenShop from "../assets/ramenShop.jpg";
+import bowlOfRamen from "../assets/bowlOfRamen.jpg";
 
 function HomePage() {
   const [index, setIndex] = useState(0);
@@ -27,22 +26,21 @@ function HomePage() {
 
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
-          <Image src={ramenShopCropped} alt="ramen shop image" fluid />
+          <Image src={ramenShop} alt="ramen shop image" />
           <Carousel.Caption>
             <h3>Find the best ramen spots in Sydney</h3>
             <p>We only promote the best spots in the city!</p>
-            {/* </div> */}
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <Image src={noodlesCropped} alt="noodles image" fluid />
+          <Image src={noodles} alt="noodles image" />
           <Carousel.Caption>
             <h3>Discover New Ramen Spots</h3>
             <p>You'll get access to all the best ramen spots in your area.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <Image src={bowlOfRamenResized} alt="ramen image" fluid />
+          <Image src={bowlOfRamen} alt="ramen image" />
           <Carousel.Caption>
             <h3>Add your reviews</h3>
             <p>
