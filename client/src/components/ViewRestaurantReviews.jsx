@@ -1,6 +1,6 @@
 // React
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 //Custom Components
 import { Review } from "./Review";
@@ -12,14 +12,15 @@ import Button from "react-bootstrap/Button";
 import CardGroup from "react-bootstrap/CardGroup";
 import Spinner from "react-bootstrap/Spinner";
 
-function ViewRestaurantReviews({ restaurantName }) {
+function ViewRestaurantReviews() {
   const [reviewList, setReviewList] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const { slug } = useParams();
 
   //get a list of all reviews on page load => save as state then loop over the list and display each one
   useEffect(() => {
     if (!isLoaded) {
-      fetch(`http://localhost:3000/api/:restaurant_name/reviews`)
+      fetch(`http://localhost:3000/api/reviews/${slug}`)
         .then((response) => response.json())
         .then((data) => {
           setReviewList(data);
