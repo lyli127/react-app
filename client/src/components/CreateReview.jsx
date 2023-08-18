@@ -80,7 +80,6 @@ const CreateReview = () => {
       <MainNav />
       <br />
       <br />
-      <div></div>
       <Container>
         <Row className="justify-content-md-center">
           <Col md="auto">
