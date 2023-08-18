@@ -125,14 +125,12 @@ function FindRamen() {
       <br />
       <br />
       <div style={{ textAlign: "center" }}>
-        <h2>Find Ramen</h2>
+        <h2>Tasty Tracks</h2>
         <div
           ref={mapContainerRef}
           style={{ height: "60vh", width: "100%" }}
         ></div>
       </div>
-      <br />
-      <br />
       <Footer />
     </>
   );
