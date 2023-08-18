@@ -14,15 +14,13 @@ function App() {
   return (
     <>
       <Routes>
-        <>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/add-review" element={<CreateReview />} />
-          <Route path="/find-ramen" element={<FindRamen />} />
-          <Route path="/all-reviews" element={<ViewAllReviewsPage />} />
-          <Route path="/reviews/:slug" element={<ViewRestaurantReviews />} />
-          <Route path="/search-reviews" element={<ReviewSearchPage />} />
-        </>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/add-review" element={<CreateReview />} />
+        <Route path="/find-ramen" element={<FindRamen />} />
+        <Route path="/all-reviews" element={<ViewAllReviewsPage />} />
+        <Route path="/reviews/:slug" element={<ViewRestaurantReviews />} />
+        <Route path="/search-reviews" element={<ReviewSearchPage />} />
       </Routes>
     </>
   );
