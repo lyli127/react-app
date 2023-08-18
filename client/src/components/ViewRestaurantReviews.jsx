@@ -40,11 +40,8 @@ function ViewRestaurantReviews() {
     <>
       <MainNav />
 
-      <Container
-        fluid="md"
-        style={{ display: "flex", justifyContent: "space-around" }}
-      >
-        <Row>
+      <Container fluid="md">
+        <Row className="justify-content-evenly">
           {isLoaded ? (
             reviewList.map((review) => (
               <Review
