@@ -89,170 +89,182 @@ const CreateReview = () => {
       </Container>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Form onSubmit={handleSubmission} style={{ width: "70%" }}>
-          <Form.Group controlId="date_visited">
-            <Form.Label>Date Visited</Form.Label>
-            <Form.Control
-              type="date"
-              name="date_visited"
-              // value={fields.date_visited}
-              // value={new Date(fields.date_visited).toISOString().split("T")[0]}
-              onChange={handleInputChange}
-            />
+          <Form.Group controlId="restaurant_name" className="mb-3">
+            <FloatingLabel label="Restaurant Name">
+              <Form.Select
+                aria-label="restaurant-name"
+                name="restaurant_name"
+                value={fields.restaurant_name}
+                onChange={handleInputChange}
+              >
+                <option></option>
+                {restaurantList.map((restaurantName) => {
+                  return (
+                    <option value={restaurantName} key={restaurantName}>
+                      {restaurantName}
+                    </option>
+                  );
+                })}
+              </Form.Select>
+            </FloatingLabel>
+          </Form.Group>
+          <Form.Group controlId="date_visited" className="mb-3">
+            <FloatingLabel label="Date Visited">
+              <Form.Control
+                type="date"
+                name="date_visited"
+                // value={fields.date_visited}
+                // value={new Date(fields.date_visited).toISOString().split("T")[0]}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
           {/* Loop through restaurant names to add them to the dropdown  */}
-          <Form.Group controlId="restaurant_name">
-            <Form.Label>Restaurant</Form.Label>
-            <Form.Select
-              aria-label="restaurant-name"
-              name="restaurant_name"
-              value={fields.restaurant_name}
-              onChange={handleInputChange}
-            >
-              <option>Choose Restaurant</option>
-              {restaurantList.map((restaurantName) => {
-                return (
-                  <option value={restaurantName} key={restaurantName}>
-                    {restaurantName}
-                  </option>
-                );
-              })}
-            </Form.Select>
+
+          <Form.Group controlId="photo_url" className="mb-3">
+            {/* <Form.Label>Photo URL</Form.Label> */}
+            <FloatingLabel label="Photo URL">
+              <Form.Control
+                type="text"
+                name="photo_url"
+                value={fields.photo_url}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="photo_url">
-            <Form.Label>Photo URL</Form.Label>
-            <Form.Control
-              type="text"
-              name="photo_url"
-              value={fields.photo_url}
-              onChange={handleInputChange}
-              placeholder="Enter photo URL"
-            />
+          <Form.Group controlId="dish_name" className="mb-3">
+            {/* <Form.Label>Dish Name</Form.Label> */}
+            <FloatingLabel label="Dish Name">
+              <Form.Control
+                type="text"
+                name="dish_name"
+                value={fields.dish_name}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="dish_name">
-            <Form.Label>Dish Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="dish_name"
-              value={fields.dish_name}
-              onChange={handleInputChange}
-              placeholder="Enter dish name"
-            />
+          <Form.Group controlId="ramen_score" className="mb-3">
+            <FloatingLabel label="Ramen Score">
+              <Form.Control
+                type="number"
+                name="ramen_score"
+                value={fields.ramen_score}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="ramen_score">
-            <Form.Label>Ramen Score</Form.Label>
-            <Form.Control
-              type="number"
-              name="ramen_score"
-              value={fields.ramen_score}
-              onChange={handleInputChange}
-              placeholder="Enter overall score"
-            />
+          <Form.Group controlId="ramen_type" className="mb-3">
+            <FloatingLabel label="Ramen Type">
+              <Form.Control
+                type="text"
+                name="ramen_type"
+                value={fields.ramen_type}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="ramen_type">
-            <Form.Label>Ramen Type</Form.Label>
-            <Form.Control
-              type="text"
-              name="ramen_type"
-              value={fields.ramen_type}
-              onChange={handleInputChange}
-              placeholder="Enter ramen type"
-            />
+          <Form.Group controlId="noodle_score" className="mb-3">
+            <FloatingLabel label="Noodle Score">
+              <Form.Control
+                type="number"
+                name="noodle_score"
+                value={fields.noodle_score}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="noodle_score">
-            <Form.Label>Noodle Score</Form.Label>
-            <Form.Control
-              type="number"
-              name="noodle_score"
-              value={fields.noodle_score}
-              onChange={handleInputChange}
-            />
+          <Form.Group controlId="noodle_texture" className="mb-3">
+            <FloatingLabel label="Noodle Texture">
+              <Form.Select
+                aria-label="noodle-texture"
+                name="noodle_texture"
+                value={fields.noodle_texture}
+                onChange={handleInputChange}
+              >
+                <option></option>
+                <option value="Very Soft">Very Soft</option>
+                <option value="Soft">Soft</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+                <option value="very Hard">Very Hard</option>
+              </Form.Select>
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="noodle_texture">
-            <Form.Label>Noodle Texture</Form.Label>
-            <Form.Select
-              aria-label="noodle-texture"
-              name="noodle_texture"
-              value={fields.noodle_texture}
-              onChange={handleInputChange}
-            >
-              <option>Choose Noodle Texture</option>
-              <option value="Very Soft">Very Soft</option>
-              <option value="Soft">Soft</option>
-              <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
-              <option value="very Hard">Very Hard</option>
-            </Form.Select>
+          <Form.Group controlId="broth_score" className="mb-3">
+            <FloatingLabel label="Broth Score">
+              <Form.Control
+                type="number"
+                name="broth_score"
+                value={fields.broth_score}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="broth_score">
-            <Form.Label>Broth Score</Form.Label>
-            <Form.Control
-              type="number"
-              name="broth_score"
-              value={fields.broth_score}
-              onChange={handleInputChange}
-              placeholder="Enter broth score"
-            />
+          <Form.Group controlId="broth_type" className="mb-3">
+            <FloatingLabel label="Broth Type">
+              <Form.Control
+                type="text"
+                name="broth_type"
+                value={fields.broth_type}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="broth_type">
-            <Form.Label>Broth Type</Form.Label>
-            <Form.Control
-              type="text"
-              name="broth_type"
-              value={fields.broth_type}
-              onChange={handleInputChange}
-              placeholder="Miso, Shoyu, Tonkotsu..."
-            />
+          <Form.Group controlId="chashu_score" className="mb-3">
+            <FloatingLabel label="Chashu Score">
+              <Form.Control
+                type="number"
+                name="chashu_score"
+                value={fields.chashu_score}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="chashu_score">
-            <Form.Label>Chashu Score</Form.Label>
-            <Form.Control
-              type="number"
-              name="chashu_score"
-              value={fields.chashu_score}
-              onChange={handleInputChange}
-            />
+          <Form.Group controlId="chashu_type" className="mb-3">
+            <FloatingLabel label="Chashu Type">
+              <Form.Select
+                aria-label="chashu_type"
+                name="chashu_type"
+                value={fields.chashu_type}
+                onChange={handleInputChange}
+              >
+                <option></option>
+                <option value="Pork">Pork</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Other">Other</option>
+              </Form.Select>
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="chashu_type">
-            <Form.Label>Chashu Type</Form.Label>
-            <Form.Select
-              aria-label="chashu_type"
-              name="chashu_type"
-              value={fields.chashu_type}
-              onChange={handleInputChange}
-            >
-              <option>Choose Chashu Type</option>
-              <option value="Pork">Pork</option>
-              <option value="Chicken">Chicken</option>
-              <option value="Vegan">Vegan</option>
-              <option value="Other">Other</option>
-            </Form.Select>
+          <Form.Group controlId="ajitama_score" className="mb-3">
+            <FloatingLabel label="Ajitama Score">
+              <Form.Control
+                type="number"
+                name="ajitama_score"
+                value={fields.ajitama_score}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="ajitama_score">
-            <Form.Label>Ajitama Score</Form.Label>
-            <Form.Control
-              type="number"
-              name="ajitama_score"
-              value={fields.ajitama_score}
-              onChange={handleInputChange}
-            />
+          <Form.Group controlId="ajitama" className="mb-3">
+            <FloatingLabel label="Ajitama">
+              <Form.Control
+                type="text"
+                name="ajitama"
+                value={fields.ajitama}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
-          <Form.Group controlId="ajitama">
-            <Form.Label>Ajitama</Form.Label>
-            <Form.Control
-              type="text"
-              name="ajitama"
-              value={fields.ajitama}
-              onChange={handleInputChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="other_notes">
-            <Form.Label>Other Notes</Form.Label>
-            <Form.Control
-              type="text"
-              name="other_notes"
-              value={fields.other_notes}
-              onChange={handleInputChange}
-            />
+          <Form.Group controlId="other_notes" className="mb-3">
+            <FloatingLabel label="Other Notes">
+              <Form.Control
+                type="text"
+                name="other_notes"
+                value={fields.other_notes}
+                onChange={handleInputChange}
+              />
+            </FloatingLabel>
           </Form.Group>
           <br />
           <Button variant="primary" type="submit">
