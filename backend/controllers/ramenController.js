@@ -6,30 +6,14 @@ import pool from "../pool.js";
 const createRamenReview = async (request, response) => {
   try {
     let restaurantId;
-
     // Step 1: Try to get the restaurant id via its slug.
     restaurantId = (
       await pool.query("SELECT id FROM restaurants WHERE slug = $1", [
-        slugify(request.body.restaurant_name),
+        slugify(request.body.restaurant_name).toLowerCase(),
       ])
     ).rows[0]?.id;
 
-    // Step 2: If restaurant doesn't exist, create new restaurant in restaurants table and get the id.
-    // Note: This will set the Restaurant name/slug to whatever the user has entered. We're getting it
-    //       later via a loose `ILIKE '%$1%'` query... so buyer beware.
-    if (!restaurantId) {
-      restaurantId = (
-        await pool.query(
-          "INSERT INTO restaurants (name, slug) VALUES ($1, $2) RETURNING id",
-          [
-            request.body.restaurant_name,
-            slugify(request.body.restaurant_name).toLowerCase(),
-          ]
-        )
-      ).rows[0]?.id;
-    }
-
-    // Step 3: Insert new ramen review into review table.
+    // Step 2: Insert new ramen review into review table.
     const {
       // restaurant_name,
       dish_name,
