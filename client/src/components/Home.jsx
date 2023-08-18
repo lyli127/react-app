@@ -26,21 +26,22 @@ function HomePage() {
       {/* HOMEPAGE CONTENT */}
 
       <Carousel activeIndex={index} onSelect={handleSelect}>
-        <Carousel.Item className="justify-content-evenly">
+        <Carousel.Item>
           <Image src={ramenShopCropped} alt="ramen shop image" fluid />
           <Carousel.Caption>
             <h3>Find the best ramen spots in Sydney</h3>
             <p>We only promote the best spots in the city!</p>
+            {/* </div> */}
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item className="justify-content-evenly">
+        <Carousel.Item>
           <Image src={noodlesCropped} alt="noodles image" fluid />
           <Carousel.Caption>
             <h3>Discover New Ramen Spots</h3>
             <p>You'll get access to all the best ramen spots in your area.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item className="justify-content-evenly">
+        <Carousel.Item>
           <Image src={bowlOfRamenResized} alt="ramen image" fluid />
           <Carousel.Caption>
             <h3>Add your reviews</h3>
