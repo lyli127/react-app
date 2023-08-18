@@ -38,9 +38,10 @@ function ViewAllReviewsPage() {
   return (
     <>
       <MainNav />
-
-      {/* <CardGroup> */}
-      <Container fluid="md" className="justify-content-center">
+      <Container
+        fluid="md"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <Row>
           {isLoaded ? (
             reviewList.map((review) => (
@@ -57,7 +58,6 @@ function ViewAllReviewsPage() {
               </div>
             </>
           )}
-          {/* </CardGroup> */}
         </Row>
       </Container>
       <Footer />

@@ -3,8 +3,8 @@ import { React, useEffect, useState } from "react";
 
 //Bootstrap
 import Form from "react-bootstrap/Form";
-import CardGroup from "react-bootstrap/CardGroup";
-import Spinner from "react-bootstrap/Spinner";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 //My Components
 import { MainNav } from "./MainNav";
@@ -81,15 +81,20 @@ const ReviewSearchPage = () => {
       <br />
       <br />
       <div>
-        <CardGroup>
-          {reviewList.map((review) => (
-            <Review
-              data={review}
-              className="review-card"
-              key={review.id}
-            ></Review>
-          ))}
-        </CardGroup>
+        <Container
+          fluid="md"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Row>
+            {reviewList.map((review) => (
+              <Review
+                data={review}
+                className="review-card"
+                key={review.id}
+              ></Review>
+            ))}
+          </Row>
+        </Container>
       </div>
       <Footer />
     </>
