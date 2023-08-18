@@ -8,9 +8,10 @@ import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
 
 //Images
-import noodlesEdited from "../assets/noodlesEdited.jpg";
-import ramenPic1 from "../assets/ramenPic1.jpeg";
-import ramenPic2edited from "../assets/ramenPic2edited.jpg";
+import noodlesCropped from "../assets/noodlesEdited.jpg";
+// import ramenPic2edited from "../assets/ramenPic2edited.jpg";
+import ramenShopCropped from "../assets/ramenShopCropped.jpg";
+import bowlOfRamenResized from "../assets/bowlOfRamenResized.jpg";
 
 function HomePage() {
   const [index, setIndex] = useState(0);
@@ -23,29 +24,34 @@ function HomePage() {
       {/* NAVBAR */}
       <MainNav />
       {/* HOMEPAGE CONTENT */}
+
       <Carousel activeIndex={index} onSelect={handleSelect}>
-        <Carousel.Item>
-          <Image src={ramenPic2edited} alt="ramen image" fluid />
+        <Carousel.Item className="justify-content-evenly">
+          <Image src={ramenShopCropped} alt="ramen shop image" fluid />
           <Carousel.Caption>
-            <h3>Get Ramen Specials</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Find the best ramen spots in Sydney</h3>
+            <p>We only promote the best spots in the city!</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-          <Image src={noodlesEdited} alt="noodles image" fluid />
+        <Carousel.Item className="justify-content-evenly">
+          <Image src={noodlesCropped} alt="noodles image" fluid />
           <Carousel.Caption>
             <h3>Discover New Ramen Spots</h3>
             <p>You'll get access to all the best ramen spots in your area.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
-          <Image src={ramenPic1} alt="ramen shop image" fluid />
+        <Carousel.Item className="justify-content-evenly">
+          <Image src={bowlOfRamenResized} alt="ramen image" fluid />
           <Carousel.Caption>
-            <h3>Sign Up Today</h3>
-            <p>It's free and you'll get access to exclusive deals.</p>
+            <h3>Add your reviews</h3>
+            <p>
+              No need to share personal data - add and share your review in one
+              easy step!
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+
       {/* FOOTER */}
       <Footer />
     </>
