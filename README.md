@@ -4,6 +4,11 @@ You can access the app via the link below:
 
 https://ramen-app.lyli.dev
 
+##Screenshots
+<img width="2552" alt="Screenshot 2023-08-18 at 7 39 18 pm" src="https://github.com/lyli127/react-app/assets/64179648/5bbfaf75-51af-42f8-91c3-835f80353c39">
+<img width="2549" alt="Screenshot 2023-08-18 at 7 39 42 pm" src="https://github.com/lyli127/react-app/assets/64179648/b33a4cd0-bfbd-47f9-9abe-e9944fd1397c">
+<img width="2536" alt="Screenshot 2023-08-18 at 7 40 05 pm" src="https://github.com/lyli127/react-app/assets/64179648/c2539c59-1701-4b96-b834-bd94bda0685f">
+
 # Ramen Restaurant Finder ReadMe
 
 This document provides an overview of the Ramen Restaurant Finder project, including the technologies used, installation instructions, user stories, wireframes, and any challenges faced during development.
