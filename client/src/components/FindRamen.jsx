@@ -50,7 +50,7 @@ function plotRestaurantsOnMap(restaurantsData, map) {
     const infoWindow = new InfoWindow({
       content: `
         <h3 style="color:black">${restaurant.name}</h3>
-        <a href="/restaurant/${restaurant.slug}">View Reviews</a>
+        <a href="/reviews/${restaurant.slug}">View Reviews</a>
         `,
       ariaLabel: restaurant.name,
     });
