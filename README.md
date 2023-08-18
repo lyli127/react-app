@@ -38,7 +38,7 @@ To run the Ramen Restaurant Finder locally, follow these steps:
 2. Make sure you have a Postgres database set up.
 3. Open a terminal and navigate to the cloned repository.
 4. Run `npm install` in both the backend and frontend directories to download all dependencies.
-5. Run the SQL files provided to inject seed data into your database.
+5. Run the SQL files provided to inject seed data into your database. (You can run SQL files ins psql with the command `\i filename.sql`)
 6. In the terminal, start the backend server by running `nodemon server.js`.
 7. In a separate terminal, start the frontend by running `npm run dev`.
 8. Open a web browser and navigate to http://localhost:5173/ to access the application.
