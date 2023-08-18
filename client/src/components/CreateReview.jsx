@@ -11,13 +11,15 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 //My Components
 import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
+// Config
+import { BASE_API_URL } from "../utils/config";
 
 const CreateReview = () => {
   const navigate = useNavigate();
   const [restaurantList, setRestaurantList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/restaurants/all")
+    fetch(`${BASE_API_URL}/api/restaurants/all`)
       .then((response) => response.json())
       .then((restaurants) => {
         // console.log(data);
@@ -50,7 +52,7 @@ const CreateReview = () => {
   const handleSubmission = (e) => {
     e.preventDefault();
     console.log(fields);
-    fetch("http://localhost:3000/api/review", {
+    fetch(`${BASE_API_URL}/api/review`, {
       method: "POST",
       body: JSON.stringify(fields),
       headers: {

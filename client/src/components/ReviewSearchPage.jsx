@@ -11,6 +11,9 @@ import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
 import { Review } from "./Review";
 
+// Config
+import { BASE_API_URL } from "../utils/config";
+
 const ReviewSearchPage = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [reviewList, setReviewList] = useState([]);
@@ -19,7 +22,7 @@ const ReviewSearchPage = () => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/restaurants/all")
+    fetch(`${BASE_API_URL}/api/restaurants/all`)
       .then((response) => response.json())
       .then((restaurants) => {
         // console.log(data);
@@ -39,7 +42,7 @@ const ReviewSearchPage = () => {
     const newRestaurant = { ...restaurant };
     newRestaurant[e.target.name] = e.target.value;
     setRestaurant(newRestaurant);
-    fetch(`http://localhost:3000/api/reviews/${e.target.value}`)
+    fetch(`${BASE_API_URL}/api/reviews/${e.target.value}`)
       .then((response) => response.json())
       .then((data) => {
         setReviewList(data);

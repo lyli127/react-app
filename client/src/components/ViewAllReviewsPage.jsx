@@ -10,6 +10,9 @@ import { Footer } from "./Footer";
 import CardGroup from "react-bootstrap/CardGroup";
 import Spinner from "react-bootstrap/Spinner";
 
+// Config
+import { BASE_API_URL } from "../utils/config";
+
 function ViewAllReviewsPage() {
   const [reviewList, setReviewList] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -17,7 +20,7 @@ function ViewAllReviewsPage() {
   //get a list of all reviews on page load => save as state then loop over the list and display each one
   useEffect(() => {
     if (!isLoaded) {
-      fetch(`http://localhost:3000/api/reviews/all`)
+      fetch(`${BASE_API_URL}/api/reviews/all`)
         .then((response) => response.json())
         .then((data) => {
           setReviewList(data);

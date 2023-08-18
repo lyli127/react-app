@@ -5,6 +5,9 @@ import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
 import ramenBowl from "../assets/ramen-64w.png";
 
+// Config
+import { BASE_API_URL } from "../utils/config";
+
 const loader = new Loader({
   apiKey: import.meta.env.VITE_GOOGLE_MAPS_DEV_KEY,
   version: "weekly",
@@ -106,7 +109,7 @@ function FindRamen() {
     const map = new Map(mapContainerRef.current, mapOptions);
 
     //get info from restaurants and plot data on map
-    fetch(`http://localhost:3000/api/restaurants/all`)
+    fetch(`${BASE_API_URL}/api/restaurants/all`)
       .then((response) => {
         return response.json();
       })

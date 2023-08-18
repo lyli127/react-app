@@ -7,12 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 
-//My Components
-// import { AccountContext } from "./AccountContext";
-
-export function MainNav(props) {
-  // const { user, setUser } = useContext(AccountContext);
-
+export function MainNav() {
   return (
     <>
       <Navbar bg="dark" variant="dark" className="justify-content-center">

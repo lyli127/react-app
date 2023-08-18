@@ -12,6 +12,9 @@ import Button from "react-bootstrap/Button";
 import CardGroup from "react-bootstrap/CardGroup";
 import Spinner from "react-bootstrap/Spinner";
 
+// Config
+import { BASE_API_URL } from "../utils/config";
+
 function ViewRestaurantReviews() {
   const [reviewList, setReviewList] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,7 +23,7 @@ function ViewRestaurantReviews() {
   //get a list of all reviews on page load => save as state then loop over the list and display each one
   useEffect(() => {
     if (!isLoaded) {
-      fetch(`http://localhost:3000/api/reviews/${slug}`)
+      fetch(`${BASE_API_URL}/api/reviews/${slug}`)
         .then((response) => response.json())
         .then((data) => {
           setReviewList(data);
