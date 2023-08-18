@@ -8,6 +8,7 @@ import FindRamen from "./components/FindRamen";
 import ViewRestaurantReviews from "./components/ViewRestaurantReviews";
 import ViewAllReviewsPage from "./components/ViewAllReviewsPage";
 import { CreateReview } from "./components/CreateReview";
+import ReviewSearchPage from "./components/ReviewSearchPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/find-ramen" element={<FindRamen />} />
           <Route path="/all-reviews" element={<ViewAllReviewsPage />} />
           <Route path="/reviews/:slug" element={<ViewRestaurantReviews />} />
+          <Route path="/search-reviews" element={<ReviewSearchPage />} />
         </>
       </Routes>
     </>
