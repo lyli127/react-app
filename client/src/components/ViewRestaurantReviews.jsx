@@ -8,9 +8,10 @@ import { MainNav } from "./MainNav";
 import { Footer } from "./Footer";
 
 //Bootstrap
-import Button from "react-bootstrap/Button";
 import CardGroup from "react-bootstrap/CardGroup";
 import Spinner from "react-bootstrap/Spinner";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 // Config
 import { BASE_API_URL } from "../utils/config";
@@ -40,23 +41,32 @@ function ViewRestaurantReviews() {
     <>
       <MainNav />
 
-      <CardGroup>
-        {isLoaded ? (
-          reviewList.map((review) => (
-            <Review
-              data={review}
-              className="review-card"
-              key={review.id}
-            ></Review>
-          ))
-        ) : (
-          <>
-            <div className="justify-content-center">
-              <Spinner animation="border" size="lg" />
-            </div>
-          </>
-        )}
-      </CardGroup>
+      {/* <CardGroup> */}
+      <div>
+        <Container
+          fluid="md"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <Row>
+            {isLoaded ? (
+              reviewList.map((review) => (
+                <Review
+                  data={review}
+                  className="review-card"
+                  key={review.id}
+                ></Review>
+              ))
+            ) : (
+              <>
+                <div className="justify-content-center">
+                  <Spinner animation="border" size="lg" />
+                </div>
+              </>
+            )}
+          </Row>
+        </Container>
+      </div>
+      {/* </CardGroup> */}
       <Footer />
     </>
   );
