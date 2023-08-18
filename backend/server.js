@@ -9,8 +9,8 @@ import "dotenv/config";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-export let BASE_URL_FRONTEND;
-export let BASE_URL_BACKEND;
+let BASE_URL_FRONTEND;
+let BASE_URL_BACKEND;
 
 if (process.env.NODE_ENV === "production") {
   BASE_URL_FRONTEND = "https://ramen-app.lyli.dev";
