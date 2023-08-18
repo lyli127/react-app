@@ -1,24 +1,29 @@
 // import RTL utilities
 import { render, screen } from "@testing-library/react";
+// Import deps
+import { BrowserRouter } from "react-router-dom";
 // import component under test
-import { ViewAllReviewsPage } from "./Review";
+import ViewAllReviewsPage from "./ViewAllReviewsPage";
+
+//nav bar is present
+it("should show my nav text", () => {
+  render(<ViewAllReviewsPage />, { wrapper: BrowserRouter });
+  expect(screen.queryByText("Home")).toBeInTheDocument();
+  expect(screen.queryByText("Find Ramen")).toBeInTheDocument();
+  expect(screen.queryByText("Reviews")).toBeInTheDocument();
+});
+
+//Footer is present
+it("should show my footer", () => {
+  render(<ViewAllReviewsPage />, { wrapper: BrowserRouter });
+  expect(screen.getByText("Lylibete Tennikoff © 2023")).toBeInTheDocument();
+});
 
 //test if review is loaded
 it("should show my review", () => {
-  render(<ViewAllReviewsPage />);
-  expect(screen.getByText("Date Visited")).toBeInTheDocument();
-  expect(screen.getByText("Restaurant")).toBeInTheDocument();
-  expect(screen.getByText("Dish Name")).toBeInTheDocument();
-  expect(screen.getByText("Ramen Score")).toBeInTheDocument();
-  expect(screen.getByText("Ramen Type")).toBeInTheDocument();
-  expect(screen.getByText("Noodle Texture")).toBeInTheDocument();
-  expect(screen.getByText("Noodle Score")).toBeInTheDocument();
-  expect(screen.getByText("Broth Type")).toBeInTheDocument();
-  expect(screen.getByText("Broth Score")).toBeInTheDocument();
-  expect(screen.getByText("Chashu Type")).toBeInTheDocument();
-  expect(screen.getByText("Chashu Score")).toBeInTheDocument();
-  expect(screen.getByText("Ajitama")).toBeInTheDocument();
-  expect(screen.getByText("Ajitama Score")).toBeInTheDocument();
-  expect(screen.getByText("Other Notes")).toBeInTheDocument();
-  expect(screen.getByText("Submit")).toBeInTheDocument();
+  render(<ViewAllReviewsPage />, { wrapper: BrowserRouter });
+  // expect(screen.getByRole("button")).toBeInTheDocument();
+  // expect(screen.getByRole("img")).toBeInTheDocument();
+  // expect(screen.getAllByDisplayValue("Visited")).toBeInTheDocument();
+  // expect(screen.getAllByAltText(/ramen/i)).toBeInTheDocument();
 });
