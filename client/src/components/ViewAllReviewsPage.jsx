@@ -38,11 +38,8 @@ function ViewAllReviewsPage() {
   return (
     <>
       <MainNav />
-      <Container
-        fluid="md"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <Row>
+      <Container fluid="md">
+        <Row className="justify-content-evenly">
           {isLoaded ? (
             reviewList.map((review) => (
               <Review

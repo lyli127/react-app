@@ -81,11 +81,8 @@ const ReviewSearchPage = () => {
       <br />
       <br />
       <div>
-        <Container
-          fluid="md"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <Row>
+        <Container fluid="md">
+          <Row className="justify-content-evenly">
             {reviewList.map((review) => (
               <Review
                 data={review}
