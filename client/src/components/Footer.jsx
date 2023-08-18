@@ -1,4 +1,5 @@
 import Image from "react-bootstrap/Image";
+import { shiba } from "../assets/shiba.png";
 
 export function Footer() {
   return (
@@ -10,7 +11,7 @@ export function Footer() {
       <div className="container">
         <span className="text-muted">
           <br />
-          <img src="/favicon.ico" alt="ramen logo" width="100" />
+          <img src={shiba} alt="ramen logo" width="100" />
           <br />
           <p>
             <span className="text-muted">Lylibete Tennikoff © 2023</span>
