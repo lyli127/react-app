@@ -1,5 +1,5 @@
 import Image from "react-bootstrap/Image";
-import { shiba } from "../assets/shiba.png";
+import shiba from "../assets/shiba.png";
 
 export function Footer() {
   return (
