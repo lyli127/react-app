@@ -6,10 +6,10 @@ import { Footer } from "./Footer";
 import ramenBowl from "../assets/ramen-64w.png";
 
 // Config
-import { BASE_API_URL } from "../utils/config";
+import { BASE_API_URL, GOOGLE_MAP_KEY } from "../utils/config";
 
 const loader = new Loader({
-  apiKey: import.meta.env.VITE_GOOGLE_MAPS_DEV_KEY,
+  apiKey: GOOGLE_MAP_KEY,
   version: "weekly",
   libraries: ["places", "core", "marker"],
 });
