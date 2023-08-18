@@ -34,6 +34,8 @@ export function MainNav(props) {
               <Link to={`/find-ramen`}>Find Ramen</Link>
             </Navbar.Text>
             <NavDropdown title="Reviews" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/search-reviews">Search</NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item href="/add-review">Add Review</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/all-reviews">
