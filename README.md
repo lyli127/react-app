@@ -5,6 +5,7 @@ You can access the app via the link below:
 https://ramen-app.lyli.dev
 
 ## Screenshots
+
 <img width="2552" alt="Screenshot 2023-08-18 at 7 39 18 pm" src="https://github.com/lyli127/react-app/assets/64179648/5bbfaf75-51af-42f8-91c3-835f80353c39">
 <img width="2549" alt="Screenshot 2023-08-18 at 7 39 42 pm" src="https://github.com/lyli127/react-app/assets/64179648/b33a4cd0-bfbd-47f9-9abe-e9944fd1397c">
 <img width="2536" alt="Screenshot 2023-08-18 at 7 40 05 pm" src="https://github.com/lyli127/react-app/assets/64179648/c2539c59-1701-4b96-b834-bd94bda0685f">
@@ -45,10 +46,6 @@ To run the Ramen Restaurant Finder locally, follow these steps:
 ## User Stories
 
 Please refer to the [UserStories.md](UserStories.md) file in the project repository for a detailed description of the user stories. This document outlines the different types of users, their goals, and why this application is valuable to them.
-
-## Wireframes
-
-Please find the wireframes for the major views and interfaces of the application in the [wireframes](https://github.com/lyli127/react-app/wireframes) directory of the project repository. These sketches provide a visual representation of the user interface and layout.
 
 ## Challenges Faced
 
